@@ -1,0 +1,14 @@
+*.class
+.mtj.tmp/
+*.war
+*.ear
+target/*
+.idea
+*/*.iml
+*.iml
+*.ipr
+*.iws
+/target/
+.classpath
+.settings/*
+/target/

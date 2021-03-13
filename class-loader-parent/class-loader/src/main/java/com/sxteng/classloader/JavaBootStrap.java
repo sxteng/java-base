@@ -15,6 +15,12 @@ public class JavaBootStrap {
         Class<StudentService> studentService = (Class<StudentService>) JavaBootStrap.class.getClassLoader().loadClass("com.sxteng.classloader" +
                 ".service.StudentService");
         System.out.println(ClassLoader.getSystemClassLoader());
-        System.out.println("执行了 JavaBootStrap ");
+        try {
+            System.out.println("执行了 JavaBootStrap ");
+        } catch (Error e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

@@ -1,12 +1,17 @@
 package com.sxteng.classloader.hutool.date;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.HexUtil;
 import cn.hutool.db.sql.SqlUtil;
 import com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,7 +25,6 @@ public class DateTest {
     @Test
     public void test(){
 
-        SqlUtil
 
         Student student = new Student();
         Human human = new Human();
@@ -99,5 +103,31 @@ public class DateTest {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+
+    @Test
+    public void test22() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        Base64.Encoder encoder = Base64.getEncoder();
+        String text = "字串文字34r35345345345" +
+                "363463466fgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg" +
+                "" +
+                "36346346gger4eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
+                "34634iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" +
+                "634643633333333333333333333333333333333333333333" +
+                "346777777777777777777777777777" +
+                "634643633333333333333333333333333333333333333333" +
+                "3467777777777777777777fdfsdfsdffsd77777777" +
+                "634643633333333333333333333333333333333333333333" +
+                "346777777777777777777777777777" +
+                "3464634666666666666666666666666666";
+        String enc=  encoder.encodeToString(text.getBytes("UTF-8"));
+        System.out.println(enc);
+        MessageDigest messageDigest =  MessageDigest.getInstance("SHA-256");
+        byte[] bytes =  messageDigest.digest(text.getBytes("UTF-8"));
+        System.out.println(HexUtil.encodeHexStr(bytes));
+        System.out.println(bytes.length);
+       // System.out.println(new String(bytes));
     }
 }
