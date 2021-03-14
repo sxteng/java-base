@@ -7,6 +7,11 @@ public class TimePeriod {
     private Date beginTime;
     private Date endTime;
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
     public Date getBeginTime() {
         return beginTime;
     }
